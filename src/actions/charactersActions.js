@@ -1,27 +1,26 @@
 import axios from "axios";
 
-import { GET_PEOPLE } from "../types";
+import { GET_CHARACTERS } from "../types";
 
-export function getPeople() {
+export function getCharacters() {
   return async (dispatch) => {
     try {
-      let people = [];
+      let characters = [];
       let url = `https://swapi.dev/api/people/`;
       while (url) {
         const { data } = await axios.get(url);
-        people = people.concat(data.results);
-        dispatch(setPeople(people));
+        characters = characters.concat(data.results);
+        dispatch(setCharacters(characters));
         url = data.next;
       }
-      return people;
     } catch (error) {
       console.log(error);
     }
   };
 }
 
-function setPeople(people) {
+function setCharacters(characters) {
   return function (dispatch) {
-    dispatch({ type: GET_PEOPLE, payload: people });
+    dispatch({ type: GET_CHARACTERS, payload: characters });
   };
 }

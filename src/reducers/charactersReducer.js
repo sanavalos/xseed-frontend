@@ -1,15 +1,15 @@
-import { GET_PEOPLE } from "../types";
+import { GET_CHARACTERS } from "../types";
 
 const initialState = {
-  people: [],
+  characters: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_PEOPLE:
+    case GET_CHARACTERS:
       return {
         ...state,
-        people: action.payload,
+        characters: action.payload,
       };
     default:
       return state;
