@@ -21,12 +21,12 @@ function Navbar() {
         <Toolbar>
           <Menu />
           <Typography
-            variant="subtitle1"
+            variant="h5"
             color="inherit"
             component="div"
             flexGrow={1}
             textAlign="center"
-            sx={{ textTransform: "capitalize" }}
+            sx={{ textTransform: "capitalize", fontWeight: "bold" }}
           >
             {location.pathname.slice(1)}
           </Typography>
