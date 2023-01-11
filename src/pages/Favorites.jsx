@@ -8,12 +8,20 @@ function Favorites() {
   const dispatch = useDispatch();
   const { filteredFavorites } = useSelector((state) => state.favorites);
 
+  const handleSubmit = (e) => {
+    e.key === "Enter" && dispatch(searchFavorite(search.toLowerCase()));
+  };
+
+  useEffect(() => {
+    search === "" && dispatch(searchFavorite(""));
+  }, [search]);
+
   return (
     <div>
       <input
         type="text"
         onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={() => dispatch(searchFavorite(search.toLowerCase()))}
+        onKeyDown={(e) => handleSubmit(e)}
       />
       {filteredFavorites?.map(({ url, name, gender, birth_year, planet }) => (
         <Character
