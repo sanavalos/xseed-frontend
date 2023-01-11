@@ -1,35 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFavorite } from "../actions/favoritesActions";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { searchFavorite } from "../actions/favoritesActions";
+import Character from "../components/Character";
 
 function Favorites() {
+  const [search, setSearch] = useState("");
   const dispatch = useDispatch();
+  const { filteredFavorites } = useSelector((state) => state.favorites);
 
-  const { favorites } = useSelector((state) => state.favorites);
   return (
     <div>
-      {favorites?.map(({ url, name, gender, birth_year, planet }) => (
-        <div key={url}>
-          <h1>{name}</h1>
-          <h2>{gender}</h2>
-          <h2>{birth_year}</h2>
-          <h2>{planet}</h2>
-          <FavoriteBorderIcon
-            sx={{ "&:hover": { color: "red", cursor: "pointer" } }}
-            onClick={() =>
-              dispatch(
-                setFavorite({
-                  url,
-                  name,
-                  gender,
-                  birth_year,
-                  planet,
-                })
-              )
-            }
-          />
-        </div>
+      <input
+        type="text"
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={() => dispatch(searchFavorite(search.toLowerCase()))}
+      />
+      {filteredFavorites?.map(({ url, name, gender, birth_year, planet }) => (
+        <Character
+          url={url}
+          name={name}
+          gender={gender}
+          birth_year={birth_year}
+          planet={planet}
+        />
       ))}
     </div>
   );
