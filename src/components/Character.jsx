@@ -101,7 +101,7 @@ function Character({
                   name,
                   gender,
                   birth_year,
-                  planet: findHomeworld(homeworld),
+                  planet: planet,
                 })
               )
             }
