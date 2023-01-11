@@ -8,8 +8,17 @@ import Typography from "@mui/material/Typography";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import Divider from "@mui/material/Divider";
 import { grey, lightGreen } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-function Character({ url, name, gender, birth_year, homeworld, planets }) {
+function Character({
+  url,
+  name,
+  gender,
+  birth_year,
+  homeworld,
+  planets,
+  planet,
+}) {
   const dispatch = useDispatch();
   const findHomeworld = (homeworld) => {
     const { name } = planets.find((planet) => planet.url === homeworld);
@@ -36,8 +45,13 @@ function Character({ url, name, gender, birth_year, homeworld, planets }) {
         <Typography variant="body1" fontWeight={600} marginBottom={1}>
           {name}
         </Typography>
-        <Stack direction="row" spacing={2} alignItems={"center"}>
-          <Typography variant="body1" color={grey[600]} fontWeight={400}>
+        <Stack direction="row" spacing={0.5} alignItems={"center"}>
+          <Typography
+            variant="body1"
+            color={grey[600]}
+            fontWeight={400}
+            sx={{ textTransform: "capitalize" }}
+          >
             {gender}
           </Typography>
           <Divider orientation="vertical" flexItem />
@@ -47,10 +61,11 @@ function Character({ url, name, gender, birth_year, homeworld, planets }) {
         </Stack>
         <Stack
           direction="row"
-          alignItems="center"
-          borderRadius={1}
-          paddingX={0.5}
-          paddingY={0.1}
+          alignItems={"center"}
+          textAlign={"center"}
+          borderRadius={2.5}
+          paddingX={1.5}
+          paddingY={0.5}
           marginY={0.5}
           sx={{
             background: grey[500],
@@ -63,28 +78,46 @@ function Character({ url, name, gender, birth_year, homeworld, planets }) {
             variant="body2"
             color={"white"}
             fontWeight={600}
-            width={100}
+            noWrap
           >
-            {findHomeworld(homeworld)}
+            {planet ?? findHomeworld(homeworld)}
           </Typography>
         </Stack>
       </Box>
       <Box>
-        <FavoriteBorderIcon
-          style={{ color: lightGreen[300] }}
-          sx={{ "&:hover": { cursor: "pointer" } }}
-          onClick={() =>
-            dispatch(
-              setFavorite({
-                url,
-                name,
-                gender,
-                birth_year,
-                planet: findHomeworld(homeworld),
-              })
-            )
-          }
-        />
+        {planet ? (
+          <FavoriteIcon
+            style={{ color: lightGreen[300] }}
+            sx={{ "&:hover": { cursor: "pointer" } }}
+            onClick={() =>
+              dispatch(
+                setFavorite({
+                  url,
+                  name,
+                  gender,
+                  birth_year,
+                  planet: findHomeworld(homeworld),
+                })
+              )
+            }
+          />
+        ) : (
+          <FavoriteBorderIcon
+            style={{ color: lightGreen[300] }}
+            sx={{ "&:hover": { cursor: "pointer" } }}
+            onClick={() =>
+              dispatch(
+                setFavorite({
+                  url,
+                  name,
+                  gender,
+                  birth_year,
+                  planet: findHomeworld(homeworld),
+                })
+              )
+            }
+          />
+        )}
       </Box>
     </Box>
   );
