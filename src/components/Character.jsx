@@ -1,6 +1,6 @@
 import React from "react";
 import { setFavorite } from "../actions/favoritesActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -51,15 +51,12 @@ function Character({
           {name}
         </Typography>
         <Stack direction="row" spacing={0.5} alignItems={"center"}>
-          <Typography
-            variant="body1"
-            color={grey[600]}
-            fontWeight={400}
-            sx={{ textTransform: "capitalize" }}
-          >
-            {gender}
+          <Typography variant="body1" color={grey[600]} fontWeight={400}>
+            {gender?.startsWith("n/a")
+              ? gender
+              : `${gender?.charAt(0).toUpperCase()}${gender?.slice(1)}`}
           </Typography>
-          <Divider orientation="vertical" flexItem />
+          <Divider orientation="vertical" flexItem color={grey[600]} />
           <Typography variant="body1" color={grey[600]} fontWeight={400}>
             {birth_year}
           </Typography>
