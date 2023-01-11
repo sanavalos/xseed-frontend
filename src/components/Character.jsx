@@ -34,11 +34,11 @@ function Character({
         m: 1,
         paddingBottom: 3,
         marginTop: 4,
+        marginLeft: 0,
         bgcolor: "background.paper",
         maxHeight: 76,
         borderBottom: 1,
         borderColor: "divider",
-        width: "100%",
       }}
     >
       <Box>

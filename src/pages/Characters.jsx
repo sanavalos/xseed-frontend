@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacters } from "../actions/charactersActions";
 import { getPlanets } from "../actions/planetsActions";
-import { Link } from "react-router-dom";
 import Character from "../components/Character";
 import Navbar from "../components/Navbar";
 import Grid from "@mui/material/Grid";
@@ -30,9 +29,6 @@ function Characters() {
   return (
     <div>
       <Navbar />
-      <Link to="/favorites">
-        <button>Favorites</button>
-      </Link>
       <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
           {planets.length > 0 &&
