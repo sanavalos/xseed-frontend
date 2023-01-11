@@ -30,10 +30,8 @@ export default function Menu() {
         open={open}
         onClose={handleClose}
         sx={{
-          width: 300,
-          flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 300,
+            width: { xs: "100%", sm: 400 },
             boxSizing: "border-box",
           },
         }}
@@ -54,7 +52,7 @@ export default function Menu() {
             >
               <ListItemText
                 primary={
-                  <Link to="/characters">
+                  <Link to="/characters" style={{ textDecoration: "inherit" }}>
                     <Typography
                       sx={{ display: "inline" }}
                       component="span"
@@ -76,7 +74,7 @@ export default function Menu() {
             >
               <ListItemText
                 primary={
-                  <Link to="/favorites">
+                  <Link to="/favorites" style={{ textDecoration: "inherit" }}>
                     <Typography
                       sx={{ display: "inline" }}
                       component="span"
