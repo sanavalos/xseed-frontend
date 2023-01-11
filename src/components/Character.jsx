@@ -47,10 +47,11 @@ function Character({ url, name, gender, birth_year, homeworld, planets }) {
         </Stack>
         <Stack
           direction="row"
-          alignItems="center"
+          alignItems={"center"}
+          textAlign={"center"}
           borderRadius={1}
-          paddingX={0.5}
-          paddingY={0.1}
+          paddingX={2.6}
+          paddingY={0.5}
           marginY={0.5}
           sx={{
             background: grey[500],
@@ -63,7 +64,7 @@ function Character({ url, name, gender, birth_year, homeworld, planets }) {
             variant="body2"
             color={"white"}
             fontWeight={600}
-            width={100}
+            noWrap
           >
             {findHomeworld(homeworld)}
           </Typography>
