@@ -10,10 +10,15 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: "#17141F",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
+}));
+
+const Background = styled(Box)(() => ({
+  backgroundColor: "#17141F",
+  minHeight: "100vh",
 }));
 
 function Characters() {
@@ -27,7 +32,7 @@ function Characters() {
   }, []);
 
   return (
-    <div>
+    <Background>
       <Navbar />
       <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
@@ -48,7 +53,7 @@ function Characters() {
             ))}
         </Grid>
       </Box>
-    </div>
+    </Background>
   );
 }
 

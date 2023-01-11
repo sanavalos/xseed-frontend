@@ -38,7 +38,7 @@ function Character({
         bgcolor: "background.paper",
         maxHeight: 76,
         borderBottom: 1,
-        borderColor: "divider",
+        borderColor: "#463B5E",
       }}
     >
       <Box>
@@ -77,7 +77,7 @@ function Character({
             maxWidth: "fit-content",
           }}
         >
-          <FmdGoodOutlinedIcon sx={{ color: grey[50] }} />
+          <FmdGoodOutlinedIcon sx={{ color: "grey[50]" }} />
           <Typography
             marginLeft={0}
             variant="body2"

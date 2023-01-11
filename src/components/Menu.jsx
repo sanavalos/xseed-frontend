@@ -23,7 +23,7 @@ export default function Menu() {
   return (
     <Box>
       <div onClick={handleOpen}>
-        <MenuIcon style={{ color: "#000000", fontSize: 40 }} />
+        <MenuIcon style={{ color: "#FFFFFF", fontSize: 40 }} />
       </div>
       <Drawer
         anchor="left"
@@ -38,7 +38,7 @@ export default function Menu() {
       >
         <Box paddingLeft={"20px"} paddingTop={"50px"}>
           <CloseIcon
-            style={{ color: "#000000", fontSize: 40 }}
+            style={{ color: "#FFFFFF", fontSize: 40 }}
             onClick={handleClose}
           />
 

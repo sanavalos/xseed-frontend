@@ -22,10 +22,10 @@ function Navbar() {
           <Menu />
           <Typography
             variant="h5"
-            color="inherit"
             component="div"
             flexGrow={1}
             textAlign="center"
+            color="white"
             sx={{ textTransform: "capitalize", fontWeight: "bold" }}
           >
             {location.pathname.slice(1)}

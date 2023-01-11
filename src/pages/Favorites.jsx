@@ -11,6 +11,12 @@ import Paper from "@mui/material/Paper";
 import Navbar from "../components/Navbar";
 import Stack from "@mui/material/Stack";
 
+const Background = styled(Box)(() => ({
+  backgroundColor: "#17141F",
+  minHeight: "100vh",
+  padding: 10,
+}));
+
 const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
 }));
@@ -29,7 +35,7 @@ function Favorites() {
   }, [search]);
 
   return (
-    <div>
+    <Background>
       <Navbar />
       <Stack
         direction={{ xs: "column", sm: "row" }}
@@ -52,6 +58,13 @@ function Favorites() {
               xs: 3,
               sm: 0,
             },
+            paddingLeft: {
+              xs: 1,
+            },
+            paddingBottom: {
+              xs: 1,
+            },
+            color: "white",
           }}
         >
           Search a favorite
@@ -89,7 +102,7 @@ function Favorites() {
           )}
         </Grid>
       </Box>
-    </div>
+    </Background>
   );
 }
 
