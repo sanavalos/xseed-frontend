@@ -4,6 +4,16 @@ import { searchFavorite } from "../actions/favoritesActions";
 import Character from "../components/Character";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
+import Navbar from "../components/Navbar";
+import Stack from "@mui/material/Stack";
+
+const Item = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(1),
+}));
 
 function Favorites() {
   const [search, setSearch] = useState("");
@@ -11,7 +21,7 @@ function Favorites() {
   const { filteredFavorites } = useSelector((state) => state.favorites);
 
   const handleSubmit = (e) => {
-    e.key === "Enter" && dispatch(searchFavorite(search.toLowerCase()));
+    e.key === "Enter" && search !== "" && dispatch(searchFavorite(search));
   };
 
   useEffect(() => {
@@ -20,23 +30,65 @@ function Favorites() {
 
   return (
     <div>
-      <Typography marginBottom={1.5}>Search a favorite</Typography>
-      <OutlinedInput
-        type="text"
-        onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={(e) => handleSubmit(e)}
-        placeholder="Character name..."
-        sx={{ minWidth: "400px", borderRadius: 5 }}
-      />
-      {filteredFavorites?.map(({ url, name, gender, birth_year, planet }) => (
-        <Character
-          url={url}
-          name={name}
-          gender={gender}
-          birth_year={birth_year}
-          planet={planet}
+      <Navbar />
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        gap={{ sm: 2 }}
+        sx={{
+          alignItems: {
+            sm: "center",
+          },
+          justifyContent: {
+            sm: "center",
+          },
+          marginBottom: {
+            sm: 5,
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            marginTop: {
+              xs: 3,
+              sm: 0,
+            },
+          }}
+        >
+          Search a favorite
+        </Typography>
+        <OutlinedInput
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => handleSubmit(e)}
+          placeholder="Character name..."
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "500px",
+            },
+            borderRadius: 5,
+          }}
         />
-      ))}
+      </Stack>
+      <Box sx={{ width: "100%" }}>
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
+          {filteredFavorites?.map(
+            ({ url, name, gender, birth_year, planet }) => (
+              <Grid item xs={12} sm={6} md={4}>
+                <Item>
+                  <Character
+                    url={url}
+                    name={name}
+                    gender={gender}
+                    birth_year={birth_year}
+                    planet={planet}
+                  />
+                </Item>
+              </Grid>
+            )
+          )}
+        </Grid>
+      </Box>
     </div>
   );
 }
