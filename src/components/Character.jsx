@@ -35,14 +35,19 @@ function Character({
         paddingBottom: 3,
         marginTop: 4,
         bgcolor: "background.paper",
-        maxWidth: 350,
         maxHeight: 76,
         borderBottom: 1,
         borderColor: "divider",
+        width: "100%",
       }}
     >
       <Box>
-        <Typography variant="body1" fontWeight={600} marginBottom={1}>
+        <Typography
+          variant="body1"
+          fontWeight={600}
+          marginBottom={1}
+          textAlign={"left"}
+        >
           {name}
         </Typography>
         <Stack direction="row" spacing={0.5} alignItems={"center"}>
