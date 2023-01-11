@@ -1,7 +1,8 @@
-import { SET_FAVORITE } from "../types";
+import { SET_FAVORITE, SEARCH_FAVORITE } from "../types";
 
 const initialState = {
   favorites: [],
+  filteredFavorites: [],
 };
 
 export default function (state = initialState, action) {
@@ -16,7 +17,21 @@ export default function (state = initialState, action) {
       return {
         ...state,
         favorites: newFavorites,
+        filteredFavorites: newFavorites,
       };
+
+    case SEARCH_FAVORITE:
+      let filterFavorites = state.favorites.filter((favorite) =>
+        favorite.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      filterFavorites = filterFavorites.length
+        ? filterFavorites
+        : state.favorites;
+      return {
+        ...state,
+        filteredFavorites: filterFavorites,
+      };
+
     default:
       return state;
   }

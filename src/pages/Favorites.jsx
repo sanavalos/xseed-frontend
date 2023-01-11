@@ -1,12 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { searchFavorite } from "../actions/favoritesActions";
 import Character from "../components/Character";
 
 function Favorites() {
-  const { favorites } = useSelector((state) => state.favorites);
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const { filteredFavorites } = useSelector((state) => state.favorites);
+
   return (
     <div>
-      {favorites?.map(({ url, name, gender, birth_year, planet }) => (
+      <input
+        type="text"
+        onChange={(e) => setSearch(e.target.value)}
+        onKeyDown={() => dispatch(searchFavorite(search.toLowerCase()))}
+      />
+      {filteredFavorites?.map(({ url, name, gender, birth_year, planet }) => (
         <Character
           url={url}
           name={name}
