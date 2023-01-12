@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#17141F",
@@ -26,9 +27,11 @@ function Characters() {
   const { characters } = useSelector((state) => state.characters);
   const { planets } = useSelector((state) => state.planets);
 
+  const localStorageData = window.localStorage.getItem("persist:root");
+
   useEffect(() => {
-    dispatch(getCharacters());
-    dispatch(getPlanets());
+    !localStorageData && dispatch(getCharacters());
+    !localStorageData && dispatch(getPlanets());
   }, []);
 
   return (
@@ -51,6 +54,36 @@ function Characters() {
                 </Item>
               </Grid>
             ))}
+          {characters?.length === 0 && (
+            <Grid
+              container
+              spacing={0}
+              direction="column"
+              textAlign="center"
+              alignItems="center"
+              marginTop={10}
+            >
+              <Item>
+                <Typography
+                  sx={{
+                    color: "white",
+                  }}
+                  variant="subtitle1"
+                >
+                  Oops! Something went wrong
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "white",
+                  }}
+                  align="center"
+                  variant="caption"
+                >
+                  No characters found
+                </Typography>
+              </Item>
+            </Grid>
+          )}
         </Grid>
       </Box>
     </Background>
