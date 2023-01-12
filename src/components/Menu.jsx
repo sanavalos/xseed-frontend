@@ -8,6 +8,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
@@ -22,9 +23,9 @@ export default function Menu() {
 
   return (
     <Box>
-      <div onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         <MenuIcon style={{ color: "#FFFFFF", fontSize: 40 }} />
-      </div>
+      </Button>
       <Drawer
         anchor="left"
         open={open}
@@ -37,11 +38,12 @@ export default function Menu() {
         }}
       >
         <Box paddingLeft={"20px"} paddingTop={"50px"}>
-          <CloseIcon
-            style={{ color: "#FFFFFF", fontSize: 40 }}
-            onClick={handleClose}
-          />
-
+          <Button>
+            <CloseIcon
+              style={{ color: "#FFFFFF", fontSize: 40 }}
+              onClick={handleClose}
+            />
+          </Button>
           <List>
             <ListItem
               sx={{
