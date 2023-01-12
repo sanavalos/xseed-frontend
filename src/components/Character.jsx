@@ -9,6 +9,7 @@ import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import Divider from "@mui/material/Divider";
 import { grey, lightGreen } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Tooltip from "@mui/material/Tooltip";
 
 function Character({
   url,
@@ -88,37 +89,41 @@ function Character({
       </Box>
       <Box>
         {planet ? (
-          <FavoriteIcon
-            style={{ color: lightGreen[300] }}
-            sx={{ "&:hover": { cursor: "pointer" } }}
-            onClick={() =>
-              dispatch(
-                setFavorite({
-                  url,
-                  name,
-                  gender,
-                  birth_year,
-                  planet: planet,
-                })
-              )
-            }
-          />
+          <Tooltip title="Unfavorite" placement="top" arrow>
+            <FavoriteIcon
+              style={{ color: lightGreen[300] }}
+              sx={{ "&:hover": { cursor: "pointer" } }}
+              onClick={() =>
+                dispatch(
+                  setFavorite({
+                    url,
+                    name,
+                    gender,
+                    birth_year,
+                    planet: planet,
+                  })
+                )
+              }
+            />
+          </Tooltip>
         ) : (
-          <FavoriteBorderIcon
-            style={{ color: lightGreen[300] }}
-            sx={{ "&:hover": { cursor: "pointer" } }}
-            onClick={() =>
-              dispatch(
-                setFavorite({
-                  url,
-                  name,
-                  gender,
-                  birth_year,
-                  planet: findHomeworld(homeworld),
-                })
-              )
-            }
-          />
+          <Tooltip title="Favorite" placement="top" arrow>
+            <FavoriteBorderIcon
+              style={{ color: lightGreen[300] }}
+              sx={{ "&:hover": { cursor: "pointer" } }}
+              onClick={() =>
+                dispatch(
+                  setFavorite({
+                    url,
+                    name,
+                    gender,
+                    birth_year,
+                    planet: findHomeworld(homeworld),
+                  })
+                )
+              }
+            />
+          </Tooltip>
         )}
       </Box>
     </Box>
