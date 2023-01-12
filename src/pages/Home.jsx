@@ -22,35 +22,35 @@ function Home() {
           fontSize: "0.875rem",
           fontWeight: "700",
           position: "absolute",
-          left: "30%",
-          right: "10%",
+          left: {
+            xs: "5%",
+            sm: "20%",
+            md: "30%",
+            lg: "35%",
+          },
           zIndex: "tooltip",
           textTransform: "uppercase",
         }}
       >
-        <Link to={"/characters"}>
-          <Typography
-            sx={{
-              color: "white",
-              marginBottom: 5,
-            }}
-            variant="h2"
-          >
-            Characters
-          </Typography>
-        </Link>
-        <Link to={"/favorites"}>
-          <Typography
-            sx={{
-              color: "white",
-              margin: 5,
-            }}
-            align="center"
-            variant="h2"
-          >
-            Favorites
-          </Typography>
-        </Link>
+        {["characters", "favorites"].map((page) => (
+          <Link to={`/${page}`}>
+            <Typography
+              sx={{
+                color: "white",
+                marginBottom: 5,
+                fontSize: {
+                  xs: "12vw",
+                  sm: "8vw",
+                  md: "6vw",
+                  lg: "4vw",
+                },
+              }}
+              align="center"
+            >
+              {page}
+            </Typography>
+          </Link>
+        ))}
       </Box>
       <Image
         src={bg}
