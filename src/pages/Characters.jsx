@@ -9,6 +9,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import store from "../store";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#17141F",
@@ -27,16 +28,23 @@ function Characters() {
   const renderCharacters = useSelector((state) => state.characters.characters);
   const { planets } = useSelector((state) => state.planets);
 
-  const localStorageData = window.localStorage.getItem("persist:root");
-  const { characters } = localStorageData && JSON.parse(localStorageData);
-  let arrayChar = JSON.parse(characters);
+  const persistedState = store.getState();
+  const { characters } = persistedState;
+  let arrayChar = characters?.characters;
 
   useEffect(() => {
-    !arrayChar.characters.length && dispatch(getCharacters());
-    !arrayChar.characters.length && dispatch(getPlanets());
+    if (arrayChar !== undefined) {
+      !arrayChar?.length && dispatch(getCharacters());
+      !arrayChar?.length && dispatch(getPlanets());
+    }
   }, []);
 
-  useEffect(() => {}, [arrayChar]);
+  useEffect(() => {
+    if (arrayChar !== undefined) {
+      !arrayChar.length && dispatch(getCharacters());
+      !arrayChar.length && dispatch(getPlanets());
+    }
+  }, [arrayChar]);
 
   return (
     <Background>
