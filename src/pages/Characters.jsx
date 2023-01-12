@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacters } from "../actions/charactersActions";
 import { getPlanets } from "../actions/planetsActions";
-import Character from "../components/Character";
 import Navbar from "../components/Navbar";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -10,11 +9,12 @@ import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import store from "../store";
+import LoadingCharacter from "../components/LoadingCharacter";
+const Character = React.lazy(() => import("../components/Character"));
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#17141F",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
+  padding: theme.spacing(2),
   textAlign: "center",
 }));
 
@@ -50,25 +50,27 @@ function Characters() {
     <Background>
       <Navbar />
       <Box sx={{ width: "100%" }}>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
+        <Grid container columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
           {planets?.length &&
             renderCharacters?.map(
               ({ url, name, gender, birth_year, homeworld }) => (
                 <Grid item xs={12} sm={6} md={4}>
                   <Item>
-                    <Character
-                      url={url}
-                      name={name}
-                      gender={gender}
-                      birth_year={birth_year}
-                      homeworld={homeworld}
-                      planets={planets}
-                    />
+                    <Suspense fallback={<LoadingCharacter />}>
+                      <Character
+                        url={url}
+                        name={name}
+                        gender={gender}
+                        birth_year={birth_year}
+                        homeworld={homeworld}
+                        planets={planets}
+                      />
+                    </Suspense>
                   </Item>
                 </Grid>
               )
             )}
-          {renderCharacters?.length === 0 && (
+          {!renderCharacters?.length && (
             <Grid
               container
               spacing={0}
