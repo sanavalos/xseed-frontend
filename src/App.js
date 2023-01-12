@@ -26,6 +26,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/characters" element={<Characters />} />
         <Route exact path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </ThemeProvider>
   );
