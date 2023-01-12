@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 import Favorites from "./pages/Favorites";
@@ -23,9 +23,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Navigate to="/characters" />} />
         <Route exact path="/characters" element={<Characters />} />
         <Route exact path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </ThemeProvider>
   );
