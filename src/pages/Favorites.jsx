@@ -101,6 +101,36 @@ function Favorites() {
             )
           )}
         </Grid>
+        {!filteredFavorites.length && (
+          <Grid
+            container
+            spacing={0}
+            direction="column"
+            textAlign="center"
+            alignItems="center"
+            marginTop={10}
+          >
+            <Item>
+              <Typography
+                sx={{
+                  color: "white",
+                }}
+                variant="subtitle1"
+              >
+                You must not be a real fan
+              </Typography>
+              <Typography
+                sx={{
+                  color: "white",
+                }}
+                align="center"
+                variant="caption"
+              >
+                No favorites found
+              </Typography>
+            </Item>
+          </Grid>
+        )}
       </Box>
     </Background>
   );
