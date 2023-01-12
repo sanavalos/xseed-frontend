@@ -36,7 +36,7 @@ function Characters() {
       <Navbar />
       <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
-          {planets.length > 0 &&
+          {planets?.length &&
             characters?.map(({ url, name, gender, birth_year, homeworld }) => (
               <Grid item xs={12} sm={6} md={4}>
                 <Item>
