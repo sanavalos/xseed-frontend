@@ -87,7 +87,7 @@ function Favorites() {
         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
           {filteredFavorites?.map(
             ({ url, name, gender, birth_year, planet }) => (
-              <Grid item xs={12} sm={6} md={4}>
+              <Grid item xs={12} sm={6} md={4} key={url}>
                 <Item>
                   <Character
                     url={url}

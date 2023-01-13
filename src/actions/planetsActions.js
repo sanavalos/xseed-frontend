@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import { GET_PLANETS } from "../types";
 
 async function setPlanets() {
@@ -7,7 +5,8 @@ async function setPlanets() {
     let planets = [];
     let url = `https://swapi.dev/api/planets/?page=1`;
     while (url) {
-      const { data } = await axios.get(url);
+      const response = await fetch(url);
+      const data = await response.json();
       planets = planets.concat(data.results);
       url = data.next;
     }

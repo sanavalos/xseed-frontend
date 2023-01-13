@@ -18,6 +18,7 @@ function Home() {
   return (
     <Background>
       <Box
+        data-testid="home"
         sx={{
           fontSize: "0.875rem",
           fontWeight: "700",
@@ -32,8 +33,8 @@ function Home() {
           textTransform: "uppercase",
         }}
       >
-        {["characters", "favorites"].map((page) => (
-          <Link to={`/${page}`}>
+        {["characters", "favorites"].map((page, index) => (
+          <Link key={index} to={`/${page}`}>
             <Typography
               sx={{
                 color: "white",

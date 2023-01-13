@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import { GET_CHARACTERS } from "../types";
 
 export function getCharacters() {
@@ -8,7 +6,8 @@ export function getCharacters() {
       let characters = [];
       let url = `https://swapi.dev/api/people/`;
       while (url) {
-        const { data } = await axios.get(url);
+        const response = await fetch(url);
+        const data = await response.json();
         characters = characters.concat(data.results);
         dispatch(setCharacters(characters));
         url = data.next;
