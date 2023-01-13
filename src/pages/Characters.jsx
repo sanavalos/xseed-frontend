@@ -38,15 +38,15 @@ function Characters() {
 
   useEffect(() => {
     if (arrayChar !== undefined) {
-      !arrayChar?.length && dispatch(getCharacters());
-      !arrayChar?.length && dispatch(getPlanets());
+      !arrayChar?.length > 0 && dispatch(getCharacters());
+      !arrayChar?.length > 0 && dispatch(getPlanets());
     }
   }, []);
 
   useEffect(() => {
     if (arrayChar !== undefined) {
-      !arrayChar.length && dispatch(getCharacters());
-      !arrayChar.length && dispatch(getPlanets());
+      !arrayChar.length > 0 && dispatch(getCharacters());
+      !arrayChar.length > 0 && dispatch(getPlanets());
     }
   }, [arrayChar]);
 
@@ -55,7 +55,7 @@ function Characters() {
       <Navbar />
       <Box sx={{ width: "100%" }}>
         <Grid container columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
-          {planets?.length &&
+          {planets?.length > 0 &&
             !allCharacters &&
             renderCharacters
               ?.slice(0, 9)
@@ -75,7 +75,7 @@ function Characters() {
                   </Item>
                 </Grid>
               ))}
-          {planets?.length &&
+          {planets?.length > 0 &&
             allCharacters &&
             renderCharacters?.map(
               ({ url, name, gender, birth_year, homeworld }) => (
@@ -95,7 +95,7 @@ function Characters() {
                 </Grid>
               )
             )}
-          {!allCharacters && planets?.length && renderCharacters && (
+          {!allCharacters && planets?.length > 0 && renderCharacters && (
             <Grid
               container
               direction="column"
@@ -120,13 +120,13 @@ function Characters() {
               </Item>
             </Grid>
           )}
-          {arrayChar.length && !renderCharacters?.length && (
+          {arrayChar.length > 0 && !renderCharacters?.length > 0 && (
             <LoadingCharacters
               title="Oops! Something went wrong"
               caption="No characters found"
             />
           )}
-          {!arrayChar.length && !renderCharacters?.length && (
+          {!arrayChar.length > 0 && !renderCharacters?.length > 0 && (
             <LoadingCharacters
               title="Do. Or do not.
               There is no try."
