@@ -74,6 +74,7 @@ function Favorites() {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => handleSubmit(e)}
           placeholder="Character name..."
+          disabled={!filteredFavorites.length}
           sx={{
             width: {
               xs: "100%",
