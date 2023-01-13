@@ -24,9 +24,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path="/" element={<Navigate to="/characters" />} />
+        <Route exact path="/home" element={<Home />} />
         <Route exact path="/characters" element={<Characters />} />
         <Route exact path="/favorites" element={<Favorites />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </ThemeProvider>
   );
