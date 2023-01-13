@@ -17,6 +17,30 @@ const theme = createTheme({
       paper: "#17141F",
     },
   },
+  typography: {
+    fontFamily: ["Urbanist", "sans-serif"].join(","),
+    h4: {
+      letterSpacing: "2px",
+    },
+    h5: {
+      letterSpacing: "2px",
+    },
+    h6: {
+      letterSpacing: "4px",
+    },
+    body1: {
+      letterSpacing: "1px",
+    },
+    body2: {
+      letterSpacing: "1px",
+    },
+    subtitle1: {
+      letterSpacing: "1px",
+    },
+    caption: {
+      letterSpacing: "0.5px",
+    },
+  },
 });
 
 function App() {
