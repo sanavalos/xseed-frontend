@@ -34,9 +34,12 @@ function Character({
         p: 1,
         m: 1,
         paddingBottom: 3,
-        marginTop: 4,
+        marginTop: {
+          xs: 0,
+          sm: 2,
+          md: 4,
+        },
         marginLeft: 0,
-        bgcolor: "background.paper",
         maxHeight: 76,
         borderBottom: 1,
         borderColor: "#463B5E",
@@ -71,7 +74,7 @@ function Character({
           paddingY={0.5}
           marginY={0.5}
           sx={{
-            background: grey[500],
+            background: grey[800],
             maxWidth: "fit-content",
           }}
         >
