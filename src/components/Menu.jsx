@@ -34,6 +34,9 @@ export default function Menu() {
           "& .MuiDrawer-paper": {
             width: { xs: "100%", sm: 400 },
             boxSizing: "border-box",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
           },
         }}
       >
