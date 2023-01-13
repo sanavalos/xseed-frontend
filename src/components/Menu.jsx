@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-export default function Menu() {
+function Menu() {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -98,3 +98,5 @@ export default function Menu() {
     </Box>
   );
 }
+
+export default Menu;

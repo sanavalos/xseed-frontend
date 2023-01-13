@@ -37,16 +37,16 @@ function Characters() {
   let arrayChar = characters?.characters;
 
   useEffect(() => {
-    if (arrayChar !== undefined) {
-      !arrayChar?.length > 0 && dispatch(getCharacters());
-      !arrayChar?.length > 0 && dispatch(getPlanets());
+    if (arrayChar !== undefined && !arrayChar?.length > 0) {
+      dispatch(getCharacters());
+      dispatch(getPlanets());
     }
   }, []);
 
   useEffect(() => {
-    if (arrayChar !== undefined) {
-      !arrayChar.length > 0 && dispatch(getCharacters());
-      !arrayChar.length > 0 && dispatch(getPlanets());
+    if (arrayChar !== undefined && !arrayChar?.length > 0) {
+      dispatch(getCharacters());
+      dispatch(getPlanets());
     }
   }, [arrayChar]);
 
