@@ -52,14 +52,21 @@ First of all you must download this repository from Github as ZIP or clone it.
 
 1. Clone or download as ZIP the repository
    ```sh
-   git clone https://github.com/sanavalos/xseed-frontend
+   git clone https://github.com/sanavalos/xseed-frontend.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-3. In case of errors
-
+3. Execute and start running the app
+   ```sh
+   npm start
+   ```
+4. Execute and start running the tests
+   ```sh
+   npm test
+   ```
+5. In case of errors
    - Delete package-lock.json file
    - Repeat step 2
 
