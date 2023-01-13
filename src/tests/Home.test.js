@@ -6,7 +6,7 @@ import Home from "../pages/Home";
 describe("Home rendering", () => {
   afterEach(cleanup);
 
-  it("renders correctly", () => {
+  it("renders component correctly", () => {
     const { getByTestId } = render(
       <MemoryRouter>
         <Home />
@@ -15,7 +15,7 @@ describe("Home rendering", () => {
     expect(getByTestId("home")).toBeTruthy();
   });
 
-  it("renders both route options", () => {
+  it("find both route options", () => {
     const { findAllByText } = render(
       <MemoryRouter>
         <Home />

@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 describe("Favorites rendering", () => {
   afterEach(cleanup);
 
-  it("renders both route options", () => {
+  it("renders empty input when componentDidMount", () => {
     render(
       <Router>
         <Provider store={store}>
