@@ -7,7 +7,7 @@ async function setPlanets() {
     while (url) {
       const response = await fetch(url);
       const data = await response.json();
-      planets = planets.concat(data.results);
+      planets = [...planets, ...data.results];
       url = data.next;
     }
     return planets;

@@ -8,7 +8,7 @@ export function getCharacters() {
       while (url) {
         const response = await fetch(url);
         const data = await response.json();
-        characters = characters.concat(data.results);
+        characters = [...characters, ...data.results];
         dispatch(setCharacters(characters));
         url = data.next;
       }
