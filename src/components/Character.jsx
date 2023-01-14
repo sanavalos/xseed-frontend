@@ -36,8 +36,7 @@ function Character({
         paddingBottom: 3,
         marginTop: {
           xs: 0,
-          sm: 2,
-          md: 4,
+          sm: 1,
         },
         marginLeft: 0,
         maxHeight: 76,

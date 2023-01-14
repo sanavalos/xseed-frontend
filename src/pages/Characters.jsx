@@ -60,7 +60,7 @@ function Characters() {
             renderCharacters
               ?.slice(0, 9)
               .map(({ url, name, gender, birth_year, homeworld }) => (
-                <Grid item xs={12} sm={6} md={4} key={url}>
+                <Grid item xs={12} sm={6} md={4} marginBottom={0.2} key={url}>
                   <Item>
                     <Suspense fallback={<LoadingCharacter />}>
                       <Character
@@ -79,7 +79,7 @@ function Characters() {
             allCharacters &&
             renderCharacters?.map(
               ({ url, name, gender, birth_year, homeworld }) => (
-                <Grid item xs={12} sm={6} md={4} key={url}>
+                <Grid item xs={12} sm={6} md={4} marginBottom={0.2} key={url}>
                   <Item>
                     <Suspense fallback={<LoadingCharacter />}>
                       <Character
