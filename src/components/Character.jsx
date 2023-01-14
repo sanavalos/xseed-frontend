@@ -21,9 +21,12 @@ function Character({
   planet,
 }) {
   const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.favorites);
+
   const findHomeworld = (homeworld) => {
-    const { name } = planets.find((planet) => planet.url === homeworld);
-    return name;
+    const name = planets?.find((planet) => planet.url === homeworld).name;
+    let isFavorite = !!favorites.find((favorite) => favorite.url === url);
+    return { name: name, favorite: isFavorite };
   };
   return (
     <Box
@@ -85,12 +88,12 @@ function Character({
             fontWeight={600}
             noWrap
           >
-            {planet ?? findHomeworld(homeworld)}
+            {findHomeworld(homeworld).name}
           </Typography>
         </Stack>
       </Box>
       <Box>
-        {planet ? (
+        {!!findHomeworld(homeworld).favorite ? (
           <Tooltip title="Unfavorite" placement="top" arrow>
             <FavoriteIcon
               style={{ color: lightGreen[300] }}
@@ -120,7 +123,7 @@ function Character({
                     name,
                     gender,
                     birth_year,
-                    planet: findHomeworld(homeworld),
+                    planet: findHomeworld(homeworld).name,
                   })
                 )
               }
