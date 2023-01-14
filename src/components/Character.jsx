@@ -88,7 +88,7 @@ function Character({
             fontWeight={600}
             noWrap
           >
-            {findHomeworld(homeworld).name}
+            {planet ?? findHomeworld(homeworld).name}
           </Typography>
         </Stack>
       </Box>
