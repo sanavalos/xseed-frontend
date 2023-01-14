@@ -2,9 +2,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="public/favicon.ico" alt="Darth Vader" width="150" height="150">
-  </a>
+  <img src="public/favicon.ico" alt="Darth Vader" width="150" height="150">
 
   <h3 align="center">Star Wars Xseed</h3>
 
