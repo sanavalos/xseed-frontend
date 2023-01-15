@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "mui-image";
 import bg from "../assets/home_bg.jpg";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 

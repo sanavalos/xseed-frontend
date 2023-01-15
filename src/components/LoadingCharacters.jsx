@@ -1,8 +1,6 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import { Grid, Typography, Paper } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#17141F",

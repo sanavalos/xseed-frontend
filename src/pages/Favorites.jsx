@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchFavorite } from "../actions/favoritesActions";
 import Character from "../components/Character";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import {
+  OutlinedInput,
+  Typography,
+  Box,
+  Grid,
+  Paper,
+  Stack,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
 import Navbar from "../components/Navbar";
-import Stack from "@mui/material/Stack";
 
 const Background = styled(Box)(() => ({
   backgroundColor: "#17141F",

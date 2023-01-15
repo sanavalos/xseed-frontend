@@ -1,15 +1,11 @@
 import React from "react";
 import { setFavorite } from "../actions/favoritesActions";
 import { useDispatch, useSelector } from "react-redux";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+import { Stack, Box, Typography, Divider, Tooltip } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Typography from "@mui/material/Typography";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
-import Divider from "@mui/material/Divider";
 import { grey, lightGreen } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Tooltip from "@mui/material/Tooltip";
 
 function Character({
   url,

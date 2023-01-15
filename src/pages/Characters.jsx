@@ -2,16 +2,12 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCharacters } from "../actions/charactersActions";
 import { getPlanets } from "../actions/planetsActions";
-import Navbar from "../components/Navbar";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import store from "../store";
 import LoadingCharacter from "../components/LoadingCharacter";
 import LoadingCharacters from "../components/LoadingCharacters";
-import Button from "@mui/material/Button";
+import Navbar from "../components/Navbar";
+import { Grid, Box, Paper, Typography, Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import store from "../store";
 
 const Character = lazy(() => import("../components/Character"));
 

@@ -1,10 +1,7 @@
 import React from "react";
-import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
+import { Stack, Box, Typography, Divider } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import Typography from "@mui/material/Typography";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
-import Divider from "@mui/material/Divider";
 import { grey, lightGreen } from "@mui/material/colors";
 
 function LoadingCharacter() {
