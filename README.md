@@ -60,9 +60,9 @@ First of all you must download this repository from Github as ZIP or clone it.
    ```sh
    npm start
    ```
-4. Execute and start running the tests
+4. Execute and start running all tests
    ```sh
-   npm test
+   npm test a
    ```
 5. In case of errors
    - Delete package-lock.json file
