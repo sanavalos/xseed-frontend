@@ -26,6 +26,9 @@ function Characters() {
   const dispatch = useDispatch();
   const [allCharacters, setAllCharacters] = useState(false);
   const renderCharacters = useSelector((state) => state.characters.characters);
+  const errorCharacters = useSelector((state) => state.characters.error);
+  const errorPlanets = useSelector((state) => state.planets.error);
+
   const { planets } = useSelector((state) => state.planets);
 
   const persistedState = store.getState();
@@ -116,7 +119,7 @@ function Characters() {
               </Item>
             </Grid>
           )}
-          {arrayChar.length > 0 && !renderCharacters?.length > 0 && (
+          {(errorCharacters || errorPlanets) && (
             <LoadingCharacters
               title="Oops! Something went wrong"
               caption="No characters found"

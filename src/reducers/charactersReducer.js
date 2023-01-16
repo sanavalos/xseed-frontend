@@ -1,7 +1,8 @@
-import { GET_CHARACTERS } from "../types";
+import { GET_CHARACTERS, SET_CHARACTERS_ERROR } from "../types";
 
 const initialState = {
   characters: [],
+  error: null,
 };
 
 export default function (state = initialState, action) {
@@ -10,6 +11,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         characters: action.payload,
+      };
+    case SET_CHARACTERS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

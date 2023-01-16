@@ -1,7 +1,8 @@
-import { GET_PLANETS } from "../types";
+import { GET_PLANETS, SET_PLANETS_ERROR } from "../types";
 
 const initialState = {
   planets: [],
+  error: null,
 };
 
 export default function (state = initialState, action) {
@@ -10,6 +11,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         planets: action.payload,
+      };
+    case SET_PLANETS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

@@ -1,4 +1,4 @@
-import { GET_CHARACTERS } from "../types";
+import { GET_CHARACTERS, SET_CHARACTERS_ERROR } from "../types";
 
 export function getCharacters() {
   return async (dispatch) => {
@@ -13,7 +13,7 @@ export function getCharacters() {
         url = data.next;
       }
     } catch (error) {
-      console.log(error);
+      dispatch(setCharactersError(error + ""));
     }
   };
 }
@@ -21,5 +21,11 @@ export function getCharacters() {
 function setCharacters(characters) {
   return function (dispatch) {
     dispatch({ type: GET_CHARACTERS, payload: characters });
+  };
+}
+
+function setCharactersError(error) {
+  return function (dispatch) {
+    dispatch({ type: SET_CHARACTERS_ERROR, payload: error });
   };
 }
