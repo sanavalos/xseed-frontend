@@ -26,18 +26,21 @@ function Characters() {
   const dispatch = useDispatch();
   const [allCharacters, setAllCharacters] = useState(false);
   const renderCharacters = useSelector((state) => state.characters.characters);
+  const allPlanets = useSelector((state) => state.planets.planets);
   const errorCharacters = useSelector((state) => state.characters.error);
   const errorPlanets = useSelector((state) => state.planets.error);
 
-  const { planets } = useSelector((state) => state.planets);
-
   const persistedState = store.getState();
   const { characters } = persistedState;
+  const { planets } = persistedState;
   let arrayChar = characters?.characters;
+  let arrayPlanets = planets?.planets;
 
   useEffect(() => {
     if (arrayChar !== undefined && !arrayChar?.length > 0) {
       dispatch(getCharacters());
+    }
+    if (arrayPlanets !== undefined && !arrayPlanets?.length > 0) {
       dispatch(getPlanets());
     }
   }, []);
@@ -45,16 +48,18 @@ function Characters() {
   useEffect(() => {
     if (arrayChar !== undefined && !arrayChar?.length > 0) {
       dispatch(getCharacters());
+    }
+    if (arrayPlanets !== undefined && !arrayPlanets?.length > 0) {
       dispatch(getPlanets());
     }
-  }, [arrayChar]);
+  }, [arrayChar, arrayPlanets]);
 
   return (
     <Background>
       <Navbar />
       <Box sx={{ width: "100%" }}>
         <Grid container columnSpacing={{ xs: 1, sm: 2, md: 10 }}>
-          {planets?.length > 0 &&
+          {allPlanets?.length > 0 &&
             !allCharacters &&
             renderCharacters
               ?.slice(0, 9)
@@ -68,13 +73,13 @@ function Characters() {
                         gender={gender}
                         birth_year={birth_year}
                         homeworld={homeworld}
-                        planets={planets}
+                        planets={allPlanets}
                       />
                     </Suspense>
                   </Item>
                 </Grid>
               ))}
-          {planets?.length > 0 &&
+          {allPlanets?.length > 0 &&
             allCharacters &&
             renderCharacters?.map(
               ({ url, name, gender, birth_year, homeworld }) => (
@@ -87,14 +92,14 @@ function Characters() {
                         gender={gender}
                         birth_year={birth_year}
                         homeworld={homeworld}
-                        planets={planets}
+                        planets={allPlanets}
                       />
                     </Suspense>
                   </Item>
                 </Grid>
               )
             )}
-          {!allCharacters && planets?.length > 0 && renderCharacters && (
+          {!allCharacters && allPlanets?.length > 0 && renderCharacters && (
             <Grid
               container
               direction="column"
@@ -119,19 +124,23 @@ function Characters() {
               </Item>
             </Grid>
           )}
-          {(errorCharacters || errorPlanets) && (
-            <LoadingCharacters
-              title="Oops! Something went wrong"
-              caption="No characters found"
-            />
-          )}
-          {!arrayChar.length > 0 && !renderCharacters?.length > 0 && (
-            <LoadingCharacters
-              title="Do. Or do not.
+          {(allPlanets === [] || renderCharacters === []) &&
+            (errorCharacters || errorPlanets) && (
+              <LoadingCharacters
+                title="Oops! Something went wrong"
+                caption="No characters found"
+              />
+            )}
+          {!arrayChar.length > 0 &&
+            !renderCharacters?.length > 0 &&
+            !errorCharacters &&
+            !errorPlanets && (
+              <LoadingCharacters
+                title="Do. Or do not.
               There is no try."
-              caption="-Yoda"
-            />
-          )}
+                caption="-Yoda"
+              />
+            )}
         </Grid>
       </Box>
     </Background>
