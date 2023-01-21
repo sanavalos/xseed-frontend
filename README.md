@@ -31,7 +31,8 @@
 
 ## About The Project
 
-This project is a responsive React SPA that provides the user a minimalistic interface to check data from Star Wars' characters. Plus the opportunity to add your favorites characters to a list and filter them by name.
+This project is a responsive React SPA that provides the user a minimalistic interface to check data from Star Wars' characters. Plus the opportunity to add your favorites characters to a list and filter them by name. <br/>
+The design to follow is this one: https://www.figma.com/file/dNuO6I2hDGcwoKFA4bjGGh/Challenge?node-id=0%3A1&t=O9Td2NKHqQBVPi7I-0
 
 ### Built With
 
