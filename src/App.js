@@ -5,6 +5,7 @@ import Favorites from "./pages/Favorites";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
+  shadows: ["none"],
   palette: {
     primary: {
       main: "#A2D1B1",
